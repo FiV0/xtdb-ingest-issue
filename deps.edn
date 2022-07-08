@@ -1,7 +1,9 @@
 {:paths ["src" "resources"]
 
  :deps
- {org.clojure/clojure {:mvn/version "1.11.1"}}
+ {org.clojure/clojure                 {:mvn/version "1.11.1"}
+  com.xtdb/xtdb-core                  {:mvn/version "1.21.0"}
+  com.xtdb/xtdb-rocksdb               {:mvn/version "1.21.0"}}
 
  :aliases
  {:dev
