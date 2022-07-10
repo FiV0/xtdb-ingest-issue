@@ -14,9 +14,12 @@
 
 (def xtdb-node (start-xtdb!))
 
-(def data (read-string (slurp "resources/entities.edn")))
+(defn data [n]
+  (->> (range n)
+       (map (fn [i] {:xt/id i :some/data (str (random-uuid))}))))
 
-(do
-  (xt/submit-tx xtdb-node (doall (map #(vector ::xt/put %) data)))
-  ;; (xt/sync xtdb-node)
-  (.close xtdb-node))
+(comment
+  (do
+    (xt/submit-tx xtdb-node (doall (map #(vector ::xt/put %) (data 10000))))
+    ;; (xt/sync xtdb-node)
+    (.close xtdb-node)))
